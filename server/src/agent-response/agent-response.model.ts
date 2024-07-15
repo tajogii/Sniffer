@@ -1,5 +1,5 @@
 import { UUID } from "crypto";
-import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import { Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
 import { Agent } from "src/agent/agent.model";
 
 interface AgentResCRA{

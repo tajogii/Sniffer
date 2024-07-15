@@ -5,6 +5,7 @@ import { AgentModule } from './agent/agent.module';
 import { ConfigModule } from '@nestjs/config';
 import { Agent } from './agent/agent.model';
 import { AgentRes } from './agent-response/agent-response.model';
+import { AgentAuthModule } from './agent-auth/agent-auth.module';
 
 @Module({
   controllers:[],
@@ -25,7 +26,8 @@ import { AgentRes } from './agent-response/agent-response.model';
       autoLoadModels: true
   }),
     AgentResponseModule,
-    AgentModule, 
+    AgentModule,
+    AgentAuthModule, 
   ]
   
 })

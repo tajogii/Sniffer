@@ -1,4 +1,4 @@
-import { Controller, Get, Headers, Param, ParseUUIDPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Param, ParseUUIDPipe, Post } from '@nestjs/common';
 import { AgentService } from './agent.service';
 import { UUID } from 'crypto';
 
@@ -10,8 +10,8 @@ export class AgentController {
     ){}
 
     @Post()
-    create(@Headers("AgentID") agentId:UUID){
-        return this.agentService.createAgent(agentId)
+    create(@Headers("AgentID") agentId:UUID, @Body()dto){
+        return this.agentService.createAgent(agentId, dto)
     }
 
     @Get()

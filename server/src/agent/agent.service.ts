@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Agent } from './agent.model';
 import { v4 as uuidv4 } from 'uuid';
 import { UUID } from 'crypto';
+import { CreateAgentDto } from './dto/agent.dto';
 
 @Injectable()
 export class AgentService {
@@ -12,14 +13,20 @@ export class AgentService {
     ){}
 
 
-    async createAgent(agentId:UUID){
+    async createAgent(agentId:UUID, dto:CreateAgentDto){
         
         if (agentId){
             throw new HttpException('10', HttpStatus.FORBIDDEN)
         }
 
         const uuid = uuidv4() as UUID
-        const agent = await this.agentModel.create({agentid: uuid})
+
+        const condidat = {
+            agentid: uuid,
+            accessKey: dto.accessKey
+        }
+        
+        const agent = await this.agentModel.create(condidat)
         return agent
     }
 
