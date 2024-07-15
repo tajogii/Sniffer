@@ -1,5 +1,6 @@
 import { Controller, Get, Headers, Param, ParseUUIDPipe, Post } from '@nestjs/common';
 import { AgentService } from './agent.service';
+import { UUID } from 'crypto';
 
 @Controller('agent')
 export class AgentController {
@@ -9,7 +10,7 @@ export class AgentController {
     ){}
 
     @Post()
-    create(@Headers("AgentID") agentId:string){
+    create(@Headers("AgentID") agentId:UUID){
         return this.agentService.createAgent(agentId)
     }
 
@@ -19,7 +20,7 @@ export class AgentController {
     }
 
     @Get('/:agentid')
-    getById(@Param('agentid', new ParseUUIDPipe()) agentid:string) {
+    getById(@Param('agentid', new ParseUUIDPipe()) agentid:UUID) {
         return this.agentService.getAgentByAngentID(agentid)
     }
 }
