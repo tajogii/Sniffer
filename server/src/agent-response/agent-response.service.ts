@@ -15,13 +15,16 @@ export class AgentResponseService {
 
     async createData(data:CreateDataDto, agentId:UUID){
         
-        const dto = {
+        const dtoObj = this.createDataObj(data, agentId)
+        const resData = await this.agentResModel.create(dtoObj)
+        return resData
+    }
+
+    private createDataObj(data:CreateDataDto, agentId:UUID){
+        return {
             ...data,
             agentid: agentId
         }
-        console.log(dto)
-        const resData = await this.agentResModel.create(dto)
-        return resData
     }
  
 

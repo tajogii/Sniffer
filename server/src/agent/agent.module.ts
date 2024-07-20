@@ -10,6 +10,9 @@ import { AgentRes } from 'src/agent-response/agent-response.model';
   providers: [AgentService],
   imports: [
     SequelizeModule.forFeature([Agent, AgentRes])
+  ],
+  exports:[
+    AgentService
   ]
 })
 export class AgentModule {}
