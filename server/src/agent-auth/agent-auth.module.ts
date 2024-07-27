@@ -7,18 +7,15 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   providers: [AgentAuth],
   controllers: [AgentAuthController],
-  imports:[
+  imports: [
     forwardRef(() => AgentModule),
     JwtModule.register({
       secret: process.env.PRIVATE_KEY || 'SECRET',
       signOptions: {
-        expiresIn: '24h'
-      }
-    })
+        expiresIn: '24h',
+      },
+    }),
   ],
-  exports:[
-    AgentAuth,
-    JwtModule
-  ]
+  exports: [AgentAuth, JwtModule],
 })
 export class AgentAuthModule {}

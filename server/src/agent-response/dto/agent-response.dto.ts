@@ -1,5 +1,3 @@
 export interface CreateDataDto {
-
-    readonly data: string;
-    
+  readonly data: string;
 }

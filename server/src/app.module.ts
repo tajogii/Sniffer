@@ -8,11 +8,11 @@ import { AgentRes } from './agent-response/agent-response.model';
 import { AgentAuthModule } from './agent-auth/agent-auth.module';
 
 @Module({
-  controllers:[],
-  providers:[],
-  imports:[
+  controllers: [],
+  providers: [],
+  imports: [
     ConfigModule.forRoot({
-      envFilePath:'.env'
+      envFilePath: '.env',
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
@@ -23,12 +23,11 @@ import { AgentAuthModule } from './agent-auth/agent-auth.module';
       database: process.env.POSTGRES_DB,
       models: [Agent, AgentRes],
       synchronize: true,
-      autoLoadModels: true
-  }),
+      autoLoadModels: true,
+    }),
     AgentResponseModule,
     AgentModule,
-    AgentAuthModule, 
-  ]
-  
+    AgentAuthModule,
+  ],
 })
-export class AppModule{}
+export class AppModule {}

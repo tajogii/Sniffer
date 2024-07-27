@@ -1,5 +1,3 @@
 export interface CreateAgentDto {
-
-    readonly accessKey: string;
-    
+  readonly accessKey: string;
 }

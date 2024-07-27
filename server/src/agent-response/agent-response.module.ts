@@ -11,7 +11,7 @@ import { AgentAuthModule } from 'src/agent-auth/agent-auth.module';
   providers: [AgentResponseService],
   imports: [
     SequelizeModule.forFeature([AgentRes, Agent]),
-    forwardRef(() => AgentAuthModule)
-  ]
+    forwardRef(() => AgentAuthModule),
+  ],
 })
 export class AgentResponseModule {}

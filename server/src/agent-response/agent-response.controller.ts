@@ -6,16 +6,11 @@ import { JwtAgentAuthGuard } from 'src/agent-auth/jwt-agent-auth.guard';
 
 @Controller('agent-response')
 export class AgentResponseController {
+  constructor(private agentResService: AgentResponseService) {}
 
-    constructor(
-        private agentResService: AgentResponseService
-    ){}
-
-    @UseGuards(JwtAgentAuthGuard)
-    @Post()
-    create(@Body() data:CreateDataDto, @Headers("AgentID") agentId:UUID){
-
-        return this.agentResService.createData(data, agentId)
-    }
-
+  @UseGuards(JwtAgentAuthGuard)
+  @Post()
+  create(@Body() data: CreateDataDto, @Headers('AgentID') agentId: UUID) {
+    return this.agentResService.createData(data, agentId);
+  }
 }

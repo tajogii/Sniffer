@@ -8,11 +8,7 @@ import { AgentRes } from 'src/agent-response/agent-response.model';
 @Module({
   controllers: [AgentController],
   providers: [AgentService],
-  imports: [
-    SequelizeModule.forFeature([Agent, AgentRes])
-  ],
-  exports:[
-    AgentService
-  ]
+  imports: [SequelizeModule.forFeature([Agent, AgentRes])],
+  exports: [AgentService],
 })
 export class AgentModule {}

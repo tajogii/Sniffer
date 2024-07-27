@@ -6,26 +6,18 @@ import { CreateDataDto } from './dto/agent-response.dto';
 
 @Injectable()
 export class AgentResponseService {
+  constructor(@InjectModel(AgentRes) private agentResModel: typeof AgentRes) {}
 
-    
-    constructor(
-        @InjectModel(AgentRes) private agentResModel: typeof AgentRes
-    ){}
+  async createData(data: CreateDataDto, agentId: UUID) {
+    const dtoObj = this.createDataObj(data, agentId);
+    const resData = await this.agentResModel.create(dtoObj);
+    return resData;
+  }
 
-
-    async createData(data:CreateDataDto, agentId:UUID){
-        
-        const dtoObj = this.createDataObj(data, agentId)
-        const resData = await this.agentResModel.create(dtoObj)
-        return resData
-    }
-
-    private createDataObj(data:CreateDataDto, agentId:UUID){
-        return {
-            ...data,
-            agentid: agentId
-        }
-    }
- 
-
+  private createDataObj(data: CreateDataDto, agentId: UUID) {
+    return {
+      ...data,
+      agentid: agentId,
+    };
+  }
 }
